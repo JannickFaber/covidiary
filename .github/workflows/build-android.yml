@@ -16,9 +16,8 @@ jobs:
     - name: Install Deps & Ionic
       run: |
         cd frontend
-        npm install -g cordova ionic
+        npm install -g ionic
         ionic --no-interactive config set -g daemon.updates false
-        cordova telemetry off
         npm install
 
     - name: Set up JDK 1.8
@@ -38,7 +37,7 @@ jobs:
     - name: Build Android app
       run: |
         cd frontend
-        ionic cordova build android --prod --release
+        # ionic cordova build android --prod --release
 
     - name: Upload Android app
       uses: actions/upload-artifact@v1

@@ -16,9 +16,8 @@ jobs:
     - name: Install Deps & Ionic
       run: |
         cd frontend
-        npm install -g cordova ionic
+        npm install -g ionic
         ionic --no-interactive config set -g daemon.updates false
-        cordova telemetry off
         npm install
 
     - name: Setup XCode
@@ -38,7 +37,7 @@ jobs:
     - name: Build iOS app
       run: |
         cd frontend
-        ionic cordova build ios --prod
+        # ionic cordova build ios --prod
 
     - name: Upload iOS app
       uses: actions/upload-artifact@v1
