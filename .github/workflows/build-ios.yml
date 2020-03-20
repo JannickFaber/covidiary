@@ -1,0 +1,44 @@
+name: Build iOS
+on: [push]
+jobs:
+  build:
+    name: Build iOS App
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1.1.0
+      with:
+        version: 12
+
+    - name: Install Deps & Ionic
+      run: |
+        npm install -g cordova ionic
+        ionic --no-interactive config set -g daemon.updates false
+        cordova telemetry off
+        npm install
+
+    - name: Setup XCode
+      uses: sinoru/actions-setup-xcode@v1.1
+      with:
+        xcode-version: '11.2.1'
+
+    - name: Version information
+      run: |
+        node --version
+        npm --version
+        ionic --version
+        npm run ng v
+        xcodebuild -version
+
+    - name: Build iOS app
+      run: |
+        ionic cordova build ios --prod
+
+    - name: Upload iOS app
+      uses: actions/upload-artifact@v1
+      with:
+        name: ios-app
+        path: platforms/ios/build/emulator/DoGuide.app

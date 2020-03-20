@@ -1,0 +1,7 @@
+{
+  "name": "Covidiary",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

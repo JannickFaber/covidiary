@@ -1,0 +1,23 @@
+name: Lint
+on: [push]
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Switch to frontend
+        run: cd frontend
+
+      - name: Install Deps
+        run: npm install
+
+      - name: Lint Ionic App
+        run: npm run lint
