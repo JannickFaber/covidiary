@@ -36,7 +36,10 @@ jobs:
 
     - name: Build Android app
       run: |
-        cd frontend/android
+        cd frontend
+        ionic build
+        npx cap sync
+        cd android
         chmod +x gradlew
         ./gradlew
 
