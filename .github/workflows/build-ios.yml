@@ -36,11 +36,12 @@ jobs:
 
     - name: Build iOS app
       run: |
-        cd frontend
-        # ionic cordova build ios --prod
+        cd frontend/ios/App
+        pod install
+        
 
     - name: Upload iOS app
       uses: actions/upload-artifact@v1
       with:
         name: ios-app
-        path: frontend/platforms/ios/build/emulator/Covidiary.app
+        path: frontend/ios/build/emulator/Covidiary.app

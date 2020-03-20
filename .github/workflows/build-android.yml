@@ -36,11 +36,11 @@ jobs:
 
     - name: Build Android app
       run: |
-        cd frontend
-        # ionic cordova build android --prod --release
+        cd frontend/android
+        ./gradlew
 
     - name: Upload Android app
       uses: actions/upload-artifact@v1
       with:
         name: android-app
-        path: frontend/platforms/android/app/build/outputs/apk
+        path: frontend/android/app/build/outputs/apk/debug
