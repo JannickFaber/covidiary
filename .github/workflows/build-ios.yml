@@ -36,7 +36,10 @@ jobs:
 
     - name: Build iOS app
       run: |
-        cd frontend/ios/App
+        cd frontend
+        ionic build
+        npx cap sync
+        cd ios/App
         pod install
 
 #    - name: Upload iOS app
