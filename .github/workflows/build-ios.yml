@@ -38,7 +38,6 @@ jobs:
       run: |
         cd frontend/ios/App
         pod install
-        
 
     - name: Upload iOS app
       uses: actions/upload-artifact@v1

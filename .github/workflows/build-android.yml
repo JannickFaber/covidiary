@@ -37,6 +37,7 @@ jobs:
     - name: Build Android app
       run: |
         cd frontend/android
+        chmod +x gradlew
         ./gradlew
 
     - name: Upload Android app
