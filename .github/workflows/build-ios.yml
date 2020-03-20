@@ -39,8 +39,8 @@ jobs:
         cd frontend/ios/App
         pod install
 
-    - name: Upload iOS app
-      uses: actions/upload-artifact@v1
-      with:
-        name: ios-app
-        path: frontend/ios/build/emulator/Covidiary.app
+#    - name: Upload iOS app
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: ios-app
+#        path: frontend/ios/build/emulator/Covidiary.app

@@ -41,7 +41,7 @@ jobs:
         npx cap sync
         cd android
         chmod +x gradlew
-        ./gradlew
+        ./gradlew build
 
     - name: Upload Android app
       uses: actions/upload-artifact@v1
