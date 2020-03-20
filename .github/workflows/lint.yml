@@ -13,11 +13,8 @@ jobs:
         with:
           node-version: 12
 
-      - name: Switch to frontend
-        run: cd frontend
-
       - name: Install Deps
-        run: npm install
+        run: cd frontend && npm install
 
       - name: Lint Ionic App
-        run: npm run lint
+        run: cd frontend && npm run lint
