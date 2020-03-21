@@ -13,18 +13,40 @@
             </ng-container>
             <ng-container *ngIf="activeProcessStep === processSteps.STEP2 || activeProcessStep === processSteps.STEP4">
                 <app-list-page [isLocation]="activeProcessStep === processSteps.STEP2"
-                    (nextStepEmitter)="nextStep($event)"
-                    (personEmitter)="setPersons($event)"
-                    (placesEmitter)="setPlaces($event)"
-                    [personList]="persons"
-                    [placeList]="places"
-                    >
+                    (nextStepEmitter)="nextStep($event)" (personEmitter)="setPersons($event)"
+                    (placesEmitter)="setPlaces($event)" [personList]="persons" [placeList]="places">
                 </app-list-page>
             </ng-container>
         </ng-container>
         <ng-container *ngIf="activeProcessStep === processSteps.STEP5">
-                    Personen: {{persons}}
-                    Orte: {{places}}
+            <div class="heading">Zusammengefasst:</div>
+            <div class="conclusion">
+                <ion-icon size="large" name="people"></ion-icon>
+                <div> Personen: </div>
+                <div class="result">{{persons.length}}</div>
+            </div>
+            <div class="conclusion">
+                <ion-icon size="large" name="partly-sunny"></ion-icon>
+                <div> Orte: </div>
+                <div class="result">{{places.length}}</div>
+            </div>
+            <div class="conclusion">
+                <div style="font-weight: bold;">Bewertung:</div>
+                <div class="result">Du bist eine große Hilfe im Kampf gegen die Ausbreitung von Covid-19!</div>
+            </div>
+            <div class="buttons-bottom">
+                <div class="button-bottom-back">
+                    <ion-button shape="full" color="tertiary" (click)="nextStep(false)">
+                        Zurück
+                    </ion-button>
+                </div>
+
+                <div class="button-bottom-forth">
+                    <ion-button shape="full" color="secondary" (click)="nextStep(true)">
+                        Speichern
+                    </ion-button>
+                </div>
+            </div>
         </ng-container>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProcessSteps } from './process-steps-enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-entry',
@@ -10,12 +11,11 @@ export class CreateEntryComponent implements OnInit {
 
   processSteps = ProcessSteps;
   activeProcessStep = ProcessSteps.STEP1;
-  private outside: boolean = false;
 
   persons: string[] = [];
   places: string[] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() { }
 
@@ -29,8 +29,7 @@ export class CreateEntryComponent implements OnInit {
 
   wasOutside(outside: boolean) {
     this.activeProcessStep = outside ? ProcessSteps.STEP2 : ProcessSteps.STEP3;
-    this.outside = outside;
-    if(!outside) {
+    if (!outside) {
       this.places = [];
     }
   }
@@ -40,7 +39,7 @@ export class CreateEntryComponent implements OnInit {
       this.activeProcessStep = ProcessSteps.STEP4;
     } else {
       this.persons = [];
-      this.endProcess();
+      this.activeProcessStep = ProcessSteps.STEP5;
     }
   }
 
@@ -49,23 +48,27 @@ export class CreateEntryComponent implements OnInit {
       switch (this.activeProcessStep) {
         case ProcessSteps.STEP2: this.activeProcessStep = ProcessSteps.STEP3;
           break;
-        case ProcessSteps.STEP4: this.endProcess();
+        case ProcessSteps.STEP4: this.activeProcessStep = ProcessSteps.STEP5;
+          break;
+        case ProcessSteps.STEP5: this.endProcess();
           break;
       }
     } else {
       switch (this.activeProcessStep) {
         case ProcessSteps.STEP2: this.activeProcessStep = ProcessSteps.STEP1;
           break;
-        case ProcessSteps.STEP3: this.activeProcessStep = this.outside ? ProcessSteps.STEP2 : ProcessSteps.STEP1;
+        case ProcessSteps.STEP3: this.activeProcessStep = this.places.length === 0 ? ProcessSteps.STEP1 : ProcessSteps.STEP2;
           break;
         case ProcessSteps.STEP4: this.activeProcessStep = ProcessSteps.STEP3;
+          break;
+        case ProcessSteps.STEP5: this.activeProcessStep = this.persons.length === 0 ? ProcessSteps.STEP3 : ProcessSteps.STEP4;
           break;
       }
     }
   }
 
   endProcess() {
-    this.activeProcessStep = ProcessSteps.STEP5;
+    this.router.navigate(['']);
   }
 
 }
