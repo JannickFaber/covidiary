@@ -44,10 +44,16 @@ jobs:
       run: |
         cd frontend/ios/App
         pod install
-        xcodebuild -scheme App -workspace App.xcworkspace/ build
+        xcodebuild -workspace App.xcworkspace \
+          -scheme App \ 
+          -sdk iphoneos \ 
+          -configuration Release archive -archivePath $PWD/build/App.xcarchive
+        xcodebuild -exportArchive -archivePath $PWD/build/App.xcarchive \ 
+          -exportOptionsPlist build/App.xcarchive/info.plist \ 
+          -exportPath $PWD/build/Covidiary.ipa
 
-#    - name: Upload iOS app
-#      uses: actions/upload-artifact@v1
-#      with:
-#        name: ios-app
-#        path: frontend/ios/build/emulator/Covidiary.app
+    - name: Upload iOS app
+      uses: actions/upload-artifact@v1
+      with:
+        name: ios-app
+        path: frontend/ios/build/Covidiary.app
