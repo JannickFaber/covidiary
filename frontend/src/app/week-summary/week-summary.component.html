@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      KW NUMMER Zusammenfassung
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">KW NUMMER Zusammenfassung</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-latest-contacts-card></app-latest-contacts-card>
+  <app-latest-places-card></app-latest-places-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Durchschnitt Kontaktaufnahme anderer Nutzer</ion-card-title>
+      <ion-card-subtitle>Wochendurchnitt in Personen</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h1>4,1</h1>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Durchschnitt Ortsbesuche anderer Nutzer</ion-card-title>
+      <ion-card-subtitle>Wochendurchnitt in Orten</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <h1>2,4</h1>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
