@@ -36,12 +36,14 @@ jobs:
 
     - name: Build iOS app
       run: |
-        cd frontend/ios/App
+        cd frontend
+        ionic build
+        npx cap sync
+        cd ios/App
         pod install
-        
 
-    - name: Upload iOS app
-      uses: actions/upload-artifact@v1
-      with:
-        name: ios-app
-        path: frontend/ios/build/emulator/Covidiary.app
+#    - name: Upload iOS app
+#      uses: actions/upload-artifact@v1
+#      with:
+#        name: ios-app
+#        path: frontend/ios/build/emulator/Covidiary.app

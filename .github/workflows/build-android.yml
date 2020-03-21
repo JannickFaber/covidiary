@@ -36,8 +36,12 @@ jobs:
 
     - name: Build Android app
       run: |
-        cd frontend/android
-        ./gradlew
+        cd frontend
+        ionic build
+        npx cap sync
+        cd android
+        chmod +x gradlew
+        ./gradlew build
 
     - name: Upload Android app
       uses: actions/upload-artifact@v1

@@ -1,33 +1,19 @@
 # Covidiary
 
-Startseite / Kalender
+## Mockups
 
-![Startseite](./mockUps/covidiary-calender.PNG "Startseite")
+| Startseite / Kalender | Eintrag Schritt 1 |
+| --- | --- |
+| ![Startseite](./mockUps/covidiary-calender.PNG) | ![Eintrag](./mockUps/eintrag.PNG) |
 
-Eintrag Schritt 1
+| Eintrag Schritt 2 (optional) | Eintrag Schritt 3 |
+| --- | --- |
+| ![Orte](./mockUps/orte.PNG) | ![Personen](./mockUps/people.PNG) |
 
-![Eintrag](./mockUps/eintrag.PNG "Eintrag")
+| Eintrag Schritt 4 (optional) | Wochen Zusammenfassung |
+| --- | --- |
+| ![Personen-Eintrag](./mockUps/people-entry.PNG) | ![Woche](./mockUps/weekly.PNG) |
 
-Eintrag Schritt 2 (optional)
-
-![Orte](./mockUps/orte.PNG "Orte")
-
-Eintrag Schritt 3
-
-![Personen](./mockUps/people.PNG "Personen")
-
-Eintrag Schritt 4 (optional)
-
-![Personen-Eintrag](./mockUps/people-entry.PNG "Personen-Eintrag")
-
-Wochen Zusammenfassung
-
-![Woche](./mockUps/weekly.PNG "Woche")
-
-Zeitraum Zusammenfassung
-
-![Zeitraum](./mockUps/period.PNG "Zeitraum")
-
-Nachrichten
-
-![Nachrichten](./mockUps/news.PNG "Nachrichten")
+| Zeitraum Zusammenfassung | Nachrichten |
+| --- | --- |
+| ![Zeitraum](./mockUps/period.PNG) | ![Nachrichten](./mockUps/news.PNG) |
