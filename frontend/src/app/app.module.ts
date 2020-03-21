@@ -8,14 +8,12 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateEntryComponent } from './create-entry/create-entry.component';
-import { ChoicePageComponent } from './create-entry/choice-page/choice-page.component';
-import { ListPageComponent } from './create-entry/list-page/list-page.component';
+import { CreateEntryModule } from './create-entry/create-entry.module';
 
 @NgModule({
-  declarations: [AppComponent, CreateEntryComponent, ChoicePageComponent, ListPageComponent],
+  declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -23,4 +21,4 @@ import { ListPageComponent } from './create-entry/list-page/list-page.component'
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

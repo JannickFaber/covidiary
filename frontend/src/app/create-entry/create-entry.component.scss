@@ -1,0 +1,25 @@
+.selected-day {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-date {
+  width: 250px;
+  text-align: center;
+  color: #ffffff;
+  font-size: large;
+}
+
+.current-date ion-icon {
+    font-size: large;
+}
+
+.entry-content {
+  height: calc(100vh - 150px);
+}
+
+.progress-content {
+  background-color: #228b22;
+}

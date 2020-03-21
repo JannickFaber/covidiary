@@ -1,12 +1,36 @@
 <ng-container *ngIf="isLocation">
-  <div>Bist du heute nach draußen gegangen?</div>
-  <div><button (click)="emitOutside(true)">Ja</button></div>
-  <div><button (click)="emitOutside(false)">Nein</button></div>
+  <div class="question-label">Bist du heute nach draußen gegangen?</div>
+  <div class="yes-button">
+    <ion-button shape="round" color="secondary" (click)="emitOutside(true)">
+      <p class="icon-label">Ja</p>
+      <ion-icon name="partly-sunny"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="no-button">
+    <ion-button shape="round" color="secondary" (click)="emitOutside(false)">
+      <p class="icon-label">Nein</p>
+      <ion-icon name="home"></ion-icon>
+    </ion-button>
+  </div>
 </ng-container>
 
 <ng-container *ngIf="!isLocation">
-  <div>Hattest du heute direkten Kontakt zu anderen Personen?</div>
-  <div><button (click)="emitContact(true)">Ja</button></div>
-  <div><button (click)="emitContact(false)">Nein</button></div>
-  <div><button (click)="goBack()">Zurück</button></div>
+  <div class="question-label">Hattest du heute direkten Kontakt zu anderen Personen?</div>
+  <div class="yes-button">
+    <ion-button shape="round" color="secondary" (click)="emitContact(true)">
+      <p class="icon-label">Ja</p>
+      <ion-icon name="people"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="no-button">
+    <ion-button shape="round" color="secondary" (click)="emitContact(false)">
+      <p class="icon-label">Nein</p>
+      <ion-icon name="person"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="button-bottom">
+    <ion-button shape="full" color="tertiary" (click)="goBack()">
+      Zurück
+    </ion-button>
+  </div>
 </ng-container>

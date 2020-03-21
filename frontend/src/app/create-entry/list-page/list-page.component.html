@@ -1,10 +1,65 @@
 <ng-container *ngIf="isLocation">
-  <div>Orte</div>
+  <div class="heading-label">Deine besuchten Orte</div>
+
+  <div class="list-container">
+
+    <ion-list>
+      <ng-container *ngFor="let placeItem of places; index as i">
+        <ion-item>
+          <ion-label>
+            {{placeItem}}
+          </ion-label>
+          <ion-icon name="trash" (click)="removePlace(i)"></ion-icon>
+        </ion-item>
+      </ng-container>
+      <ion-item button (click)="addModal()">
+        <ion-icon name="partly-sunny"></ion-icon>
+        <ion-label>
+          Ort hinzufügen
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
 </ng-container>
 
 <ng-container *ngIf="!isLocation">
-  <div>Kontaktpersonen</div>
+  <div class="heading-label">Deine Kontaktpersonen</div>
+
+  <div class="list-container">
+
+    <ion-list>
+      <ng-container *ngFor="let personItem of persons; index as i">
+        <ion-item>
+          <ion-label>
+            {{personItem}}
+          </ion-label>
+          <ion-icon name="trash" (click)="removePerson(i)"></ion-icon>
+        </ion-item>
+      </ng-container>
+      <ion-item button (click)="addModal()">
+        <ion-icon name="person-add"></ion-icon>
+        <ion-label>
+          Person hinzufügen
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
 </ng-container>
 
-<div><button (click)="nextStep(false)">Zurück</button></div>
-<div><button (click)="nextStep(true)">Weiter</button></div>
+<div class="buttons-bottom">
+  <div class="button-bottom-back">
+    <ion-button shape="full" color="tertiary" (click)="nextStep(false)">
+      Zurück
+    </ion-button>
+  </div>
+
+  <div class="button-bottom-forth">
+    <ion-button shape="full" color="primary" (click)="nextStep(true)">
+      Weiter
+    </ion-button>
+  </div>
+</div>

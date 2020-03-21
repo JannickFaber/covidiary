@@ -12,19 +12,34 @@ export class CreateEntryComponent implements OnInit {
   activeProcessStep = ProcessSteps.STEP1;
   private outside: boolean = false;
 
+  persons: string[] = [];
+  places: string[] = [];
+
   constructor() { }
 
   ngOnInit() { }
 
+  setPersons(persons: string[]) {
+    this.persons = persons;
+  }
+
+  setPlaces(places: string[]) {
+    this.places = places;
+  }
+
   wasOutside(outside: boolean) {
     this.activeProcessStep = outside ? ProcessSteps.STEP2 : ProcessSteps.STEP3;
     this.outside = outside;
+    if(!outside) {
+      this.places = [];
+    }
   }
 
   hadContact(contact: boolean) {
     if (contact) {
       this.activeProcessStep = ProcessSteps.STEP4;
     } else {
+      this.persons = [];
       this.endProcess();
     }
   }
@@ -50,7 +65,7 @@ export class CreateEntryComponent implements OnInit {
   }
 
   endProcess() {
-    console.log('end');
+    this.activeProcessStep = ProcessSteps.STEP5;
   }
 
 }

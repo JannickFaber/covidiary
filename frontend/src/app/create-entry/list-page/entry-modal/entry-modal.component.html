@@ -1,0 +1,19 @@
+<div class="modal-content">
+
+  <ion-input [(ngModel)]="modalString" autofocus="true" placeholder="{{description}}"
+  ></ion-input>
+
+  <div class="modal-actions">
+    <span class="icon-button">
+    <ion-button shape="round" color="secondary" (click)="dismiss()">
+      <ion-icon size="large" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </span>
+  <span class="icon-button">
+    <ion-button shape="round" color="secondary" [disabled]="modalString.length < 1" (click)="dismiss()">
+      <ion-icon size="large" name="chevron-forward-circle-outline"></ion-icon>
+    </ion-button>
+  </span>
+  </div>
+
+</div>

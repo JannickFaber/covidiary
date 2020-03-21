@@ -1,0 +1,33 @@
+.button-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.question-label {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  width: 100vw;
+}
+
+.icon-label {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.yes-button {
+  width: 100vw;
+  text-align: center;
+  padding: 20px;
+}
+
+.no-button {
+  width: 100vw;
+  text-align: center;
+  padding: 20px;
+}

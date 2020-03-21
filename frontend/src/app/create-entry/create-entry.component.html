@@ -1,14 +1,30 @@
-<ng-container *ngIf="activeProcessStep === processSteps.STEP1 || activeProcessStep === processSteps.STEP3">
-<app-choice-page
-[isLocation]="activeProcessStep === processSteps.STEP1"
-(outsideEmitter)="wasOutside($event)"
-(contactEmitter)="hadContact($event)"
-(goBackEmitter)="nextStep(false)"
-></app-choice-page>
-</ng-container>
-<ng-container *ngIf="activeProcessStep === processSteps.STEP2 || activeProcessStep === processSteps.STEP4">
-<app-list-page
-[isLocation]="activeProcessStep === processSteps.STEP2"
-(nextStepEmitter)="nextStep($event)"
-></app-list-page>
-</ng-container>
+<div class="progress-content">
+    <div class="selected-day">
+        <div class="current-date">
+            <ion-icon name="time"></ion-icon> So, 22.03.2020
+        </div>
+    </div>
+    <div class="entry-content">
+        <ng-container *ngIf="activeProcessStep !== processSteps.STEP5">
+            <ng-container *ngIf="activeProcessStep === processSteps.STEP1 || activeProcessStep === processSteps.STEP3">
+                <app-choice-page [isLocation]="activeProcessStep === processSteps.STEP1"
+                    (outsideEmitter)="wasOutside($event)" (contactEmitter)="hadContact($event)"
+                    (goBackEmitter)="nextStep(false)"></app-choice-page>
+            </ng-container>
+            <ng-container *ngIf="activeProcessStep === processSteps.STEP2 || activeProcessStep === processSteps.STEP4">
+                <app-list-page [isLocation]="activeProcessStep === processSteps.STEP2"
+                    (nextStepEmitter)="nextStep($event)"
+                    (personEmitter)="setPersons($event)"
+                    (placesEmitter)="setPlaces($event)"
+                    [personList]="persons"
+                    [placeList]="places"
+                    >
+                </app-list-page>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="activeProcessStep === processSteps.STEP5">
+                    Personen: {{persons}}
+                    Orte: {{places}}
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.heading-label {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  color: #ffffff;
+  font-weight: bold;
+  width: 100vw;
+}
+
+.buttons-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.button-bottom-back {
+  display: inline-block;
+  width: 50vw;
+}
+
+.button-bottom-forth {
+  display: inline-block;
+  width: 50vw;
+}
+
+.list-container {
+    height: calc(100vh - 240px);
+    overflow: scroll;
+    background-color: #ffffff;
+}
