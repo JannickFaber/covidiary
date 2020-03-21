@@ -4,6 +4,7 @@ import {
   IonFabButton,
   IonIcon
 } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -26,7 +27,7 @@ export class Tab1Page {
     currentDate: new Date(),
   };
 
-  constructor() {}
+  constructor(private router : Router) {}
 
   changeMode(mode: string) {
     this.calendar.mode = mode;
@@ -34,6 +35,10 @@ export class Tab1Page {
 
   today() {
     this.calendar.currentDate = new Date();
+  }
+
+  createEntry() {
+    this.router.navigate(['createentry'])
   }
 
 }
