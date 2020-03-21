@@ -41,6 +41,7 @@ jobs:
         npx cap sync
         cd ios/App
         pod install
+        xcodebuild -scheme App -workspace App.xcworkspace/ build
 
 #    - name: Upload iOS app
 #      uses: actions/upload-artifact@v1
