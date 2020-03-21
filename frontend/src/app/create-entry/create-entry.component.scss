@@ -1,0 +1,63 @@
+.selected-day {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-date {
+  width: 250px;
+  text-align: center;
+  color: #000000;
+  font-size: large;
+}
+
+.current-date ion-icon {
+  font-size: large;
+}
+
+.entry-content {
+  height: calc(100vh - 150px);
+}
+
+.progress-content {
+  background-image: linear-gradient(#ffffff, #ffffff, #228b22);
+}
+
+.buttons-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.button-bottom-back {
+  display: inline-block;
+  width: 50vw;
+}
+
+.button-bottom-forth {
+  display: inline-block;
+  width: 50vw;
+}
+
+.heading {
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  color: #000000;
+  font-weight: bold;
+  width: 100vw;
+}
+
+.conclusion {
+  text-align: center;
+  font-size: large;
+  padding: 10px;
+  margin-top: 10px;;
+}
+
+.result {
+  padding-top: 5px;
+}
