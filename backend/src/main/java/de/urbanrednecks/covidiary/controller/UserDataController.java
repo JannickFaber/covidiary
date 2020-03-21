@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 
 @RestController
+@CrossOrigin("*")
 public class UserDataController {
 
     private final UserDataService userDataService;
