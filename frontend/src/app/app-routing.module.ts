@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'createentry',
     component: CreateEntryComponent
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+  }
 ];
 @NgModule({
   imports: [

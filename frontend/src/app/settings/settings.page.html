@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Benachrichtigung bei Eintragserinnerung</ion-label>
+      <ion-toggle [(ngModel)]="entryNotification"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Benachrichtigungsuhrzeit</ion-label>
+      <ion-datetime display-format="HH:mm" picker-format="HH:mm" [(ngModel)]="timeForNotification"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Benachrichtigung bei neuer Nachricht</ion-label>
+      <ion-toggle [(ngModel)]="newMessageNotification"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <div class="bottom-buttons">
+    <ion-button shape="full" color="primary" (click)="save()">
+      Speichern
+    </ion-button>
+  </div>
+</ion-content>
