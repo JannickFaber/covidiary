@@ -1,7 +1,7 @@
 export interface INews{
         status: string,
         totalResults: number,
-        articles: IArticle
+        articles: IArticle[]
 }
 
 export interface IArticle {

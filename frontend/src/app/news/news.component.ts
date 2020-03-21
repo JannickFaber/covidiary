@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {INews} from "./news";
 import {NewsService} from "./news.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-news',
   templateUrl: 'news.component.html',
-  styleUrls: ['news.component.scss']
+  styleUrls: ['news.component.scss'],
+  providers: [HttpClient]
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, OnDestroy {
 
   public news: INews;
 
@@ -16,6 +18,8 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     this._newsService.getNews()
         .subscribe(data => this.news = data);
-    console.log(this.news.toString());
+  }
+
+  ngOnDestroy() {
   }
 }

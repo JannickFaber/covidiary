@@ -4,16 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NewsComponent } from './news.component';
 import {RouterModule} from "@angular/router";
-import {ExploreContainerComponentModule} from "../explore-container/explore-container.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
+    HttpClientModule,
     RouterModule.forChild([{ path: '', component: NewsComponent }])
   ],
+  providers: [HttpClientModule],
   declarations: [NewsComponent]
 })
 export class NewsComponentModule {}
