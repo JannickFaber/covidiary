@@ -16,7 +16,7 @@ export class EntryModalComponent implements OnInit {
   modalString: string = '';
 
   constructor(navParams: NavParams) {
-    this.description = navParams.get('location') ? 'Gib einen Ort ein, den du besucht hast.' : 'Gib eine Person ein, mit der du Kontakt hattest.';
+    this.description = navParams.get('location') ? 'Trage einen Ort ein.' : 'Trage eine Person ein.';
    }
 
   ngOnInit() {
