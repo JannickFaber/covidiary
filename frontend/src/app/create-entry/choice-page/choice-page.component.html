@@ -1,0 +1,12 @@
+<ng-container *ngIf="isLocation">
+  <div>Bist du heute nach draußen gegangen?</div>
+  <div><button (click)="emitOutside(true)">Ja</button></div>
+  <div><button (click)="emitOutside(false)">Nein</button></div>
+</ng-container>
+
+<ng-container *ngIf="!isLocation">
+  <div>Hattest du heute direkten Kontakt zu anderen Personen?</div>
+  <div><button (click)="emitContact(true)">Ja</button></div>
+  <div><button (click)="emitContact(false)">Nein</button></div>
+  <div><button (click)="goBack()">Zurück</button></div>
+</ng-container>

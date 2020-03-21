@@ -1,0 +1,10 @@
+<ng-container *ngIf="isLocation">
+  <div>Orte</div>
+</ng-container>
+
+<ng-container *ngIf="!isLocation">
+  <div>Kontaktpersonen</div>
+</ng-container>
+
+<div><button (click)="nextStep(false)">Zurück</button></div>
+<div><button (click)="nextStep(true)">Weiter</button></div>

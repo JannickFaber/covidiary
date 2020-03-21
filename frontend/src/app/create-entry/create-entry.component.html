@@ -1,0 +1,14 @@
+<ng-container *ngIf="activeProcessStep === processSteps.STEP1 || activeProcessStep === processSteps.STEP3">
+<app-choice-page
+[isLocation]="activeProcessStep === processSteps.STEP1"
+(outsideEmitter)="wasOutside($event)"
+(contactEmitter)="hadContact($event)"
+(goBackEmitter)="nextStep(false)"
+></app-choice-page>
+</ng-container>
+<ng-container *ngIf="activeProcessStep === processSteps.STEP2 || activeProcessStep === processSteps.STEP4">
+<app-list-page
+[isLocation]="activeProcessStep === processSteps.STEP2"
+(nextStepEmitter)="nextStep($event)"
+></app-list-page>
+</ng-container>
