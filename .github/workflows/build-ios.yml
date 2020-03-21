@@ -34,12 +34,15 @@ jobs:
         npm run ng v
         xcodebuild -version
 
-    - name: Build iOS app
+    - name: Build Ionic app and prepare iOS App
       run: |
         cd frontend
         ionic build
         npx cap sync
-        cd ios/App
+
+    - name: Build iOS app
+      run: |
+        cd frontend/ios/App
         pod install
         xcodebuild -scheme App -workspace App.xcworkspace/ build
 
