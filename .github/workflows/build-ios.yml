@@ -44,7 +44,7 @@ jobs:
       run: |
         cd frontend/ios/App
         pod install
-        xcodebuild -scheme App -workspace App.xcworkspace/ build
+        xcodebuild -scheme App -workspace App.xcworkspace/ clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED="NO"
 
 #    - name: Upload iOS app
 #      uses: actions/upload-artifact@v1
