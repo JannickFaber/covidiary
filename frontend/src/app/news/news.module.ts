@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NewsComponent } from './news.component';
 import {RouterModule} from "@angular/router";
-import {Tab2Page} from "../tab2/tab2.page";
+import {ExploreContainerComponentModule} from "../explore-container/explore-container.module";
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: NewsComponent }])
   ],
   declarations: [NewsComponent]
