@@ -14,7 +14,7 @@ import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,
