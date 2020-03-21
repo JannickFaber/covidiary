@@ -4,20 +4,15 @@ import de.urbanrednecks.covidiary.entities.UserMapper;
 import de.urbanrednecks.covidiary.entities.WeekResult;
 import de.urbanrednecks.covidiary.repositories.UserRepository;
 import de.urbanrednecks.covidiary.repositories.WeekResultRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.UUID;
 import java.util.stream.StreamSupport;
 
 @Service
 public class UserDataService {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserDataService.class);
 
     private final UserRepository userRepository;
     private final WeekResultRepository weekResultRepository;
@@ -57,30 +52,41 @@ public class UserDataService {
     }
 
     public double getLocationScore(LocalDate firstDayOfWeek) {
-        double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek))
-                .mapToDouble(WeekResult::getLocationScore).sum();
-        return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count();
+        if (firstDayOfWeek.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
+            if (weekResultRepository.count() == 0) {
+                return 0;
+            }
+            double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek))
+                    .mapToDouble(WeekResult::getLocationScore).sum();
+            return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count();
+        } else {
+            throw new IllegalArgumentException("firstDayOfWeek must be a monday. " + firstDayOfWeek + " is a " + firstDayOfWeek.getDayOfWeek());
+        }
     }
 
     public double getContactScore(LocalDate firstDayOfWeek) {
-        double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek))
-                .mapToDouble(WeekResult::getContactScore).sum();
-        return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count();
+        if (firstDayOfWeek.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
+            double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek))
+                    .mapToDouble(WeekResult::getContactScore).sum();
+            return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count();
+        } else {
+            throw new IllegalArgumentException("firstDayOfWeek must be a monday. " + firstDayOfWeek + " is a " + firstDayOfWeek.getDayOfWeek());
+        }
     }
 
     public double getLocationScore() {
         double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
                 .mapToDouble(WeekResult::getLocationScore).sum();
-        return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false).count();
+        return sum / weekResultRepository.count();
     }
 
     public double getContactScore() {
         double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
                 .mapToDouble(WeekResult::getContactScore).sum();
-        return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false).count();
+        return sum / weekResultRepository.count();
     }
 }
