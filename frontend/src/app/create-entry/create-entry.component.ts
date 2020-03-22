@@ -18,7 +18,7 @@ export class CreateEntryComponent implements OnInit, AfterViewInit {
   constructor(private router: Router) {
   }
   ngAfterViewInit(): void {
-    document.getElementById('entry').style.height = window.innerHeight + 'px';
+    document.getElementById('entry').style.height = (window.innerHeight - 100)  + 'px';
   }
 
   ngOnInit() {}
