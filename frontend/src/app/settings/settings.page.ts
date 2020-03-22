@@ -1,6 +1,6 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Router} from "@angular/router";
-import {StorageService} from "../services/storage-service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from '../services/storage-service';
 
 @Component({
   selector: 'app-settings',
@@ -11,15 +11,11 @@ export class SettingsPage implements OnInit {
 
   newMessageNotification = false;
   entryNotification = false;
-  timeForNotification = new Date("1990-02-19T20:00+01:00").toISOString();
+  timeForNotification = new Date('1990-02-19T20:00+01:00').toISOString();
 
-  constructor(private router: Router, private storageService: StorageService) {}
+  constructor(private router: Router, private storageService: StorageService) { }
 
   ngOnInit() {
-    // console.log(this.storageService.getNewMessageNotification());
-    // console.log(this.storageService.getEntryNotification());
-    // console.log(this.storageService.getTimeForNotification());
-
     this.newMessageNotification = this.storageService.getNewMessageNotification();
     this.entryNotification = this.storageService.getEntryNotification();
     this.timeForNotification = this.storageService.getTimeForNotification().toISOString();
@@ -29,6 +25,6 @@ export class SettingsPage implements OnInit {
     this.storageService.setEntryNotification(this.entryNotification);
     this.storageService.setNewMessageNotification(this.newMessageNotification);
     this.storageService.setTimeForNotification(new Date(this.timeForNotification));
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 }
