@@ -1,0 +1,14 @@
+<div>
+  <ion-list>
+    <ion-list-header>
+      <ion-icon name="compass" item-left></ion-icon>
+      <ion-title>Deine besuchten Orte</ion-title>
+    </ion-list-header>
+
+    <ion-item *ngFor="let place of places">
+      <ion-label>
+        <h2>{{place.name}}, {{place.visitedAt.toLocaleDateString()}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</div>
