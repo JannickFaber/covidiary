@@ -15,58 +15,29 @@
     </ion-toolbar>
   </ion-header>
 
-  <div *ngFor="let article of news">>
-    News-Title: {{article.title}}
+  <div *ngFor="let article of news">
+
+    <ion-item>
+      <ion-datetime value="{{article.publishedAt}}" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-item>
+        <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
+        </ion-item>
+        <ion-item>
+          <ion-card-title>{{article.title}}</ion-card-title>
+          <ion-button slot="end" href="{{article.url}}">Artikel</ion-button>
+        </ion-item>
+
+      </ion-card-header>
+      <ion-card-content>
+        {{article.description}}
+      </ion-card-content>
+    </ion-card>
+
   </div>
 
-    <ion-item>
-      <ion-datetime value="2020-03-21" placeholder="Select Date"></ion-datetime>
-    </ion-item>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-item>
-          <ion-card-title>Ausgangssperre verhängt!</ion-card-title>
-          <ion-button fill="clear" slot="end">Artikel</ion-button>
-        </ion-item>
-
-      </ion-card-header>
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-
-    <ion-item>
-      <ion-datetime value="2020-03-20" placeholder="Select Date"></ion-datetime>
-    </ion-item>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-item>
-          <ion-card-title>Ausgangssperre angekündigt</ion-card-title>
-          <ion-button fill="clear" slot="end">Artikel</ion-button>
-        </ion-item>
-
-      </ion-card-header>
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-item>
-          <ion-card-title>Ausgangssperre in Diskussion</ion-card-title>
-          <ion-button fill="clear" slot="end">Artikel</ion-button>
-        </ion-item>
-
-      </ion-card-header>
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
 
 </ion-content>
