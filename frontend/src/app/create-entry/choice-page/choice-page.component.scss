@@ -1,7 +1,7 @@
 .choice-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 100px);
 }
 
 .question-label {
