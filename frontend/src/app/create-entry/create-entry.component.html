@@ -4,7 +4,7 @@
             <ion-icon name="time"></ion-icon> So, 22.03.2020
         </div>
     </div>
-    <div class="entry-content">
+    <div id="entry" class="entry-content">
         <ng-container *ngIf="activeProcessStep !== processSteps.STEP5">
             <ng-container *ngIf="activeProcessStep === processSteps.STEP1 || activeProcessStep === processSteps.STEP3">
                 <app-choice-page [isLocation]="activeProcessStep === processSteps.STEP1"

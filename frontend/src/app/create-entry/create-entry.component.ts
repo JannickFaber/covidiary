@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ProcessSteps } from './process-steps-enum';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-entry.component.html',
   styleUrls: ['./create-entry.component.scss'],
 })
-export class CreateEntryComponent implements OnInit {
+export class CreateEntryComponent implements OnInit, AfterViewInit {
 
   processSteps = ProcessSteps;
   activeProcessStep = ProcessSteps.STEP1;
@@ -15,11 +15,13 @@ export class CreateEntryComponent implements OnInit {
   persons: string[] = [];
   places: string[] = [];
 
-  vh = window.innerHeight * 0.01;
+  constructor(private router: Router) {
+  }
+  ngAfterViewInit(): void {
+    document.getElementById('entry').style.height = window.innerHeight + 'px';
+  }
 
-  constructor(private router: Router) { }
-
-  ngOnInit() { }
+  ngOnInit() {}
 
   setPersons(persons: string[]) {
     this.persons = persons;
