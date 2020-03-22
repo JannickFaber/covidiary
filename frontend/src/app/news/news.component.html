@@ -15,10 +15,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-news *ngIf="news">
-    News-Status: {{news?.status}}
-    Totale News: {{news?.totalResults}}
-  </app-news>
+  <div *ngFor="let article of news">>
+    News-Title: {{article.title}}
+  </div>
 
     <ion-item>
       <ion-datetime value="2020-03-21" placeholder="Select Date"></ion-datetime>

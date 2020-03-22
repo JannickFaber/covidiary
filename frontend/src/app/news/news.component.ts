@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {INews} from "./news";
+import {IArticle, INews} from "./news";
 import {NewsService} from "./news.service";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -12,13 +12,15 @@ import {Observable} from "rxjs";
 })
 export class NewsComponent implements OnInit, OnDestroy {
 
-  news: INews;
+  news: IArticle;
 
   constructor(private _newsService: NewsService) {}
 
   ngOnInit() {
-    this._newsService.loadNews();
-    this.news = this._newsService.getNews();
+    this._newsService.getNews().subscribe((data)=>{
+      console.log(data);
+      this.news = data['articles'];
+    });
   }
 
   ngOnDestroy() {
