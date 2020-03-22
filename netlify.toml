@@ -1,7 +1,7 @@
 [build]
-
-command = "cd frontend && npm run build --prod"
-publish = "frontend/www"
+base = "frontend/"
+publish = "www"
+command = "npm run build --prod"
 
 [[redirects]]
   from = "/*"
