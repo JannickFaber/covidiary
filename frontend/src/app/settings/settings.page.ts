@@ -25,6 +25,5 @@ export class SettingsPage implements OnInit {
     this.storageService.setEntryNotification(this.entryNotification);
     this.storageService.setNewMessageNotification(this.newMessageNotification);
     this.storageService.setTimeForNotification(new Date(this.timeForNotification));
-    this.router.navigate(['/']);
   }
 }
