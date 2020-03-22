@@ -1,5 +1,5 @@
 ion-content {
-   ion-toolbar {
+  ion-toolbar {
     --background: translucent;
   }
 
@@ -10,7 +10,7 @@ ion-content {
   .top {
     vertical-align: top;
   }
-  
+
   .date-area {
     .date {
       font-size: 30px;
@@ -31,4 +31,16 @@ ion-content {
       margin-right: 4px;
     }
   }
+}
+
+.add-entry {
+  padding-top: 4px;
+  display: inline-flex;
+}
+
+.week-heading {
+  margin-bottom: 14px;
+}
+.warning {
+  display: inline-flex;
 }
