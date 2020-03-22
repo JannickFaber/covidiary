@@ -22,7 +22,7 @@
         {{article.description}}
       </ion-card-content>
       <ion-item>
-        <ion-button *ngIf="article.url && article.source.name" size="small" href="{{article.url}}">Zum Artikel auf {{article.source.name}}</ion-button>
+        <a *ngIf="article.url && article.source.name" size="small" href="{{article.url}}" style="color: grey;">Zum Artikel auf {{article.source.name}}</a>
       </ion-item>
     </ion-card>
   </div>
