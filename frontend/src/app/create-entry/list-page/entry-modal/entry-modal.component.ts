@@ -12,8 +12,8 @@ export class EntryModalComponent implements OnInit {
 
   @Input() modalCtrl: ModalController;
 
-  description: string = '';
-  modalString: string = '';
+  description = '';
+  modalString = '';
 
   constructor(navParams: NavParams) {
     this.description = navParams.get('location') ? 'Trage einen Ort ein.' : 'Trage eine Person ein.';
@@ -24,7 +24,7 @@ export class EntryModalComponent implements OnInit {
 
   dismiss() {
     this.modalCtrl.dismiss({
-      'entryString': this.modalString
+      entryString: this.modalString
     });
   }
 }

@@ -5,20 +5,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-entry',
   templateUrl: './create-entry.component.html',
-  styleUrls: ['./create-entry.component.scss'],
+  styleUrls: ['./create-entry.component.scss']
 })
 export class CreateEntryComponent implements OnInit, AfterViewInit {
-
   processSteps = ProcessSteps;
   activeProcessStep = ProcessSteps.STEP1;
 
   persons: string[] = [];
   places: string[] = [];
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
   ngAfterViewInit(): void {
-    document.getElementById('entry').style.height = (window.innerHeight - 100)  + 'px';
+    document.getElementById('entry').style.height =
+      window.innerHeight - 100 + 'px';
   }
 
   ngOnInit() {}
@@ -50,22 +49,31 @@ export class CreateEntryComponent implements OnInit, AfterViewInit {
   nextStep(goNext: boolean) {
     if (goNext) {
       switch (this.activeProcessStep) {
-        case ProcessSteps.STEP2: this.activeProcessStep = ProcessSteps.STEP3;
+        case ProcessSteps.STEP2:
+          this.activeProcessStep = ProcessSteps.STEP3;
           break;
-        case ProcessSteps.STEP4: this.activeProcessStep = ProcessSteps.STEP5;
+        case ProcessSteps.STEP4:
+          this.activeProcessStep = ProcessSteps.STEP5;
           break;
-        case ProcessSteps.STEP5: this.endProcess();
+        case ProcessSteps.STEP5:
+          this.endProcess();
           break;
       }
     } else {
       switch (this.activeProcessStep) {
-        case ProcessSteps.STEP2: this.activeProcessStep = ProcessSteps.STEP1;
+        case ProcessSteps.STEP2:
+          this.activeProcessStep = ProcessSteps.STEP1;
           break;
-        case ProcessSteps.STEP3: this.activeProcessStep = this.places.length === 0 ? ProcessSteps.STEP1 : ProcessSteps.STEP2;
+        case ProcessSteps.STEP3:
+          this.activeProcessStep =
+            this.places.length === 0 ? ProcessSteps.STEP1 : ProcessSteps.STEP2;
           break;
-        case ProcessSteps.STEP4: this.activeProcessStep = ProcessSteps.STEP3;
+        case ProcessSteps.STEP4:
+          this.activeProcessStep = ProcessSteps.STEP3;
           break;
-        case ProcessSteps.STEP5: this.activeProcessStep = this.persons.length === 0 ? ProcessSteps.STEP3 : ProcessSteps.STEP4;
+        case ProcessSteps.STEP5:
+          this.activeProcessStep =
+            this.persons.length === 0 ? ProcessSteps.STEP3 : ProcessSteps.STEP4;
           break;
       }
     }
@@ -74,5 +82,4 @@ export class CreateEntryComponent implements OnInit, AfterViewInit {
   endProcess() {
     this.router.navigate(['']);
   }
-
 }
