@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {INews} from "./news";
 import {NewsService} from "./news.service";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-news',
@@ -11,13 +12,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class NewsComponent implements OnInit, OnDestroy {
 
-  public news: INews;
+  news: INews;
 
   constructor(private _newsService: NewsService) {}
 
   ngOnInit() {
-    this._newsService.getNews()
-        .subscribe(data => this.news = data);
+    this._newsService.loadNews();
+    this.news = this._newsService.getNews();
   }
 
   ngOnDestroy() {
