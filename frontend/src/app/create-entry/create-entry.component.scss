@@ -1,5 +1,5 @@
 .selected-day {
-  height: 150px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
 }
 
 .entry-content {
-  height: calc(100vh - 150px);
+  height: calc(100vh - 100px);
 }
 
 .progress-content {
