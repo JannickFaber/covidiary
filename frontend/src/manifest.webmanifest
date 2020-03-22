@@ -1,8 +1,8 @@
 {
-  "name": "app",
-  "short_name": "app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Covidiary",
+  "short_name": "Covidiary",
+  "theme_color": "#52c952",
+  "background_color": "#52c952",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
