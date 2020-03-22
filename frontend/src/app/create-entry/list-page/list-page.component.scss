@@ -1,18 +1,30 @@
+.list-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;;
+}
+
 .heading-label {
   text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 20px;
   color: #000000;
   font-weight: bold;
   width: 100vw;
+  height: 50px;
+}
+
+.list-container {
+  flex: 1;
+  overflow: scroll;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .buttons-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 50px;
+  padding-top:8px;
 }
 
 .button-bottom-back {
@@ -23,14 +35,4 @@
 .button-bottom-forth {
   display: inline-block;
   width: 50vw;
-}
-
-.list-container {
-  height: calc(100vh - 248px);
-  overflow: scroll;
-  background-color: #ffffff;
-  border-radius: 8px;
-  margin-left: 10px;
-  margin-right: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

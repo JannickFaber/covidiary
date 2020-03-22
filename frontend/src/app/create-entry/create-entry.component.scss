@@ -24,11 +24,43 @@
   background-image: linear-gradient(#ffffff, #ffffff, #228b22);
 }
 
+.last-step {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heading {
+  text-align: center;
+  height: 40px;
+  color: #000000;
+  font-weight: bold;
+  width: 100vw;
+}
+
+.conclusion {
+  text-align: center;
+  font-size: large;
+  height: 120px;
+  width: 100vw;
+}
+
+.result {
+  padding: 6px;
+  flex: 1;
+  width: 100vw;
+  text-align: center;
+}
+
+.number {
+  padding: 6px;
+  width: 100vw;
+  text-align: center;
+}
+
 .buttons-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: 50px;
+  padding-top:8px;
 }
 
 .button-bottom-back {
@@ -39,25 +71,4 @@
 .button-bottom-forth {
   display: inline-block;
   width: 50vw;
-}
-
-.heading {
-  text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 20px;
-  color: #000000;
-  font-weight: bold;
-  width: 100vw;
-}
-
-.conclusion {
-  text-align: center;
-  font-size: large;
-  padding: 10px;
-  margin-top: 10px;;
-}
-
-.result {
-  padding-top: 5px;
 }
