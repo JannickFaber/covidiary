@@ -1,6 +1,6 @@
 [build]
 base = "frontend/"
-publish = "www"
+publish = "www/"
 command = "npm run build --prod"
 
 [[redirects]]

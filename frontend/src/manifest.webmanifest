@@ -2,7 +2,7 @@
   "name": "Covidiary",
   "short_name": "Covidiary",
   "theme_color": "#52c952",
-  "background_color": "#52c952",
+  "background_color": "#fff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
