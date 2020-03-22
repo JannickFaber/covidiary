@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { CreateEntryComponent } from './create-entry/create-entry.component';
 
 const routes: Routes = [
   {
@@ -8,12 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'createentry',
-    component: CreateEntryComponent
-  },
-  {
-    path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    path: 'create-entry',
+    loadChildren: () => import('./create-entry/create-entry.module').then( m => m.CreateEntryModule)
   }
 ];
 @NgModule({

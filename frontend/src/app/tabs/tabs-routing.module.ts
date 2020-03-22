@@ -33,7 +33,7 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../news/news.module').then(m => m.NewsComponentModule)
+              import('../news/news.module').then(m => m.NewsPageModule)
           }
         ]
       },

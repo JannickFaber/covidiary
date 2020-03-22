@@ -11,7 +11,7 @@ export class HomePage {
   constructor(private router: Router) { }
 
   createEntry() {
-    this.router.navigate(['createentry']);
+    this.router.navigate(['create-entry']);
   }
 
 }

@@ -1,10 +1,12 @@
-import { IonicModule } from '@ionic/angular';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NewsComponent } from './news.component';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
+import { IonicModule } from '@ionic/angular';
+
+import { NewsPage } from './news.page';
 
 @NgModule({
   imports: [
@@ -12,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forChild([{ path: '', component: NewsComponent }])
+    RouterModule.forChild([{ path: '', component: NewsPage }])
   ],
   providers: [HttpClientModule],
-  declarations: [NewsComponent]
+  declarations: [NewsPage]
 })
-export class NewsComponentModule {}
+export class NewsPageModule {}
