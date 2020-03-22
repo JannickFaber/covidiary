@@ -15,6 +15,8 @@ export class CreateEntryComponent implements OnInit {
   persons: string[] = [];
   places: string[] = [];
 
+  vh = window.innerHeight * 0.01;
+
   constructor(private router: Router) { }
 
   ngOnInit() { }
