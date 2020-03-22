@@ -1,0 +1,32 @@
+ion-row > ion-col {
+  border: 1px solid var(--ion-text-color, #000);
+}
+
+.entry-container {
+  width: 100%;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.date-area {
+  .date {
+    font-size: 30px;
+    margin-right: 4px;
+  }
+}
+
+.icon-area {
+  width: 100%;
+  text-align: center;
+
+  .icon {
+    margin-right: 5%;
+  }
+
+  ion-icon {
+    font-size: 40px;
+    margin-right: 4px;
+  }
+}

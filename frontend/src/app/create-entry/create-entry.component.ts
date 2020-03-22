@@ -1,6 +1,9 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ProcessSteps } from './process-steps-enum';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DiaryEntry} from "../model/diary-entry";
+import {StorageService} from "../services/storage-service";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-create-entry',
@@ -10,24 +13,36 @@ import { Router } from '@angular/router';
 export class CreateEntryComponent implements OnInit, AfterViewInit {
   processSteps = ProcessSteps;
   activeProcessStep = ProcessSteps.STEP1;
+  diaryEntry: DiaryEntry;
+  date: moment.Moment;
 
   persons: string[] = [];
   places: string[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storageService: StorageService, private route: ActivatedRoute) {}
+
   ngAfterViewInit(): void {
     document.getElementById('entry').style.height =
-      window.innerHeight - 100 + 'px';
+        window.innerHeight - 100 + 'px';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.queryParams.subscribe(event => {
+      this.date = moment(event.day);
+      this.diaryEntry = this.storageService.getEntryByDate(event.day)
+    });
+  }
 
   setPersons(persons: string[]) {
     this.persons = persons;
+    console.log(persons);
+    this.diaryEntry.persons = persons;
   }
 
   setPlaces(places: string[]) {
     this.places = places;
+    console.log(places);
+    this.diaryEntry.locations = places;
   }
 
   wasOutside(outside: boolean) {
@@ -57,6 +72,18 @@ export class CreateEntryComponent implements OnInit, AfterViewInit {
           break;
         case ProcessSteps.STEP5:
           this.endProcess();
+          if (!this.diaryEntry.persons) {
+            this.diaryEntry.persons = [];
+          }
+          if (!this.diaryEntry.locations) {
+            this.diaryEntry.locations = [];
+          }
+          console.log(this.diaryEntry);
+          this.diaryEntry.date = this.date.format('YYYY-MM-DD');
+          this.storageService.updateDiaryEntry(this.diaryEntry);
+          console.log(this.date);
+          console.log(this.storageService.getDiaryEntries());
+          // console.log(this.storageService.getEntryByDate(this.date.format('YYYY-MM-DD')));
           break;
       }
     } else {

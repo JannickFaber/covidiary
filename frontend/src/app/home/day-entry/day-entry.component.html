@@ -1,0 +1,27 @@
+<ion-col>
+  <div class="date-area">
+    <span class="date">{{day.date.substring(8)}}</span>
+    <span class="top">{{weekday}}</span>
+  </div>
+  <ion-grid class="icon-area">
+    <ion-row>
+      <div *ngIf="day.locations === null || day.persons === null" class="entry-container">
+        <ion-col class="icon">
+          <ion-icon name="add-outline" (click)="createEntry()"></ion-icon><br>
+          Eintrag hinzufügen
+        </ion-col>
+      </div>
+      <div *ngIf="day.locations !== null && day.persons !== null" class="entry-container">
+        <ion-col class="icon">
+          <ion-icon *ngIf="day.locations.length > 0" name="sunny-outline"></ion-icon>
+          <ion-icon *ngIf="day.locations.length === 0" name="home-outline"></ion-icon>
+          <span class="top">{{day.locations.length}}</span>
+        </ion-col>
+        <ion-col class="icon">
+          <ion-icon name="people-outline"></ion-icon>
+          <span class="top">{{day.persons.length}}</span>
+        </ion-col>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-col>
