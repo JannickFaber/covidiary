@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NewsService {
 
-  private url = 'http://newsapi.org/v2/top-headlines?country=de&category=health&apiKey=4d6381250b7243df9fa889a380113343';
+  private url = 'https://newsapi.org/v2/top-headlines?country=de&category=health&apiKey=4d6381250b7243df9fa889a380113343';
 
   constructor(private http: HttpClient) { }
 
