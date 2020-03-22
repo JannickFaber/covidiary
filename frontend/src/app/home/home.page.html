@@ -137,7 +137,7 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="add-outline"></ion-icon><br>
+              <ion-icon name="add-outline" (click)="createEntry()"></ion-icon><br>
               Eintrag hinzufügen
             </ion-col>
           </ion-row>
@@ -163,10 +163,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="createEntry()">
-      <ion-icon icon="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>
