@@ -20,7 +20,7 @@ export class DayEntryComponent implements OnInit {
   }
 
   createEntry() {
-    this.router.navigate(['createentry'], {queryParams: {day: this.day.date}});
+    this.router.navigate(['create-entry'], {queryParams: {day: this.day.date}});
   }
 
 }
