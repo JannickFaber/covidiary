@@ -25,11 +25,11 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon name="home"></ion-icon>
               <span class="top"></span>
             </ion-col>
             <ion-col class="icon">
-              <ion-icon name="people-outline"></ion-icon>
+              <ion-icon name="people"></ion-icon>
               <span class="top">0</span>
             </ion-col>
           </ion-row>
@@ -43,11 +43,11 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon name="home"></ion-icon>
               <span class="top"></span>
             </ion-col>
             <ion-col class="icon">
-              <ion-icon name="people-outline"></ion-icon>
+              <ion-icon name="people"></ion-icon>
               <span class="top">0</span>
             </ion-col>
           </ion-row>
@@ -63,11 +63,11 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="cloudy-night-outline"></ion-icon>
+              <ion-icon name="partly-sunny"></ion-icon>
               <span class="top">2</span>
             </ion-col>
             <ion-col class="icon">
-              <ion-icon name="people-outline"></ion-icon>
+              <ion-icon name="people"></ion-icon>
               <span class="top">2</span>
             </ion-col>
           </ion-row>
@@ -81,11 +81,11 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="thunderstorm-outline"></ion-icon>
+              <ion-icon name="partly-sunny"></ion-icon>
               <span class="top">4</span>
             </ion-col>
             <ion-col class="icon">
-              <ion-icon name="people-outline"></ion-icon>
+              <ion-icon name="people"></ion-icon>
               <span class="top">4</span>
             </ion-col>
           </ion-row>
@@ -101,7 +101,7 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="warning-outline"></ion-icon><br>
+              <ion-icon name="warning-outline"></ion-icon><br />
               Fehlender Eintrag
             </ion-col>
           </ion-row>
@@ -115,12 +115,12 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="home-outline"></ion-icon>
+              <ion-icon name="partly-sunny"></ion-icon>
               <span class="top">2</span>
             </ion-col>
             <ion-col class="icon">
-              <ion-icon name="people-outline"></ion-icon>
-              <span class="top">2</span>
+              <ion-icon name="people"></ion-icon>
+              <span class="top">1</span>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -135,28 +135,35 @@
         <ion-grid class="icon-area">
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="add-outline" (click)="createEntry()"></ion-icon><br>
-              Eintrag hinzufügen
+              <div class="add-entry" (click)="createEntry()">
+                <div>
+                  <ion-icon name="add"></ion-icon>
+                </div>
+                <div>Eintrag hinzufügen</div>
+              </div>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-col>
       <ion-col>
-        <div class="date-area">
-          <span class="date">30</span>
-          <span class="top">Montag</span>
-        </div>
         <ion-grid class="icon-area">
+          <div class="week-heading">Deine Woche</div>
           <ion-row>
             <ion-col class="icon">
-              <ion-icon name="home-outline"></ion-icon>
-              <span class="top">2</span>
+              <ion-icon name="partly-sunny"></ion-icon>
+              <span class="top">8</span>
             </ion-col>
             <ion-col class="icon">
-              <ion-icon name="people-outline"></ion-icon>
-              <span class="top">2</span>
+              <ion-icon name="people"></ion-icon>
+              <span class="top">7</span>
             </ion-col>
           </ion-row>
+          <div class="warning">
+            <div>
+              <ion-icon size="small" name="warning-outline"></ion-icon>
+            </div>
+            <div>unvollständig</div>
+          </div>
         </ion-grid>
       </ion-col>
     </ion-row>
