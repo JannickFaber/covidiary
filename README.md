@@ -1,7 +1,7 @@
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/JannickFaber/covidiary)
-![Lint](https://github.com/JannickFaber/covidiary/workflows/Lint/badge.svg)
-![Build iOS](https://github.com/JannickFaber/covidiary/workflows/Build%20iOS/badge.svg)
-![Build Android](https://github.com/JannickFaber/covidiary/workflows/Build%20Android/badge.svg)
+[![Lint](https://github.com/JannickFaber/covidiary/workflows/Lint/badge.svg)](https://github.com/JannickFaber/covidiary/actions?query=workflow%3ALint)
+[![Build iOS](https://github.com/JannickFaber/covidiary/workflows/Build%20iOS/badge.svg)](https://github.com/JannickFaber/covidiary/actions?query=workflow%3A%22Build+iOS%22)
+[![Build Android](https://github.com/JannickFaber/covidiary/workflows/Build%20Android/badge.svg)](https://github.com/JannickFaber/covidiary/actions?query=workflow%3A%22Build+Android%22)
 
 # [Covidiary](https://covidiary.netlify.com/)
 
