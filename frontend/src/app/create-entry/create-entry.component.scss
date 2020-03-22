@@ -1,0 +1,74 @@
+.selected-day {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-date {
+  width: 250px;
+  text-align: center;
+  color: #000000;
+  font-size: large;
+}
+
+.current-date ion-icon {
+  font-size: large;
+}
+
+.entry-content {
+  height: calc(--vh - 100px);
+}
+
+.progress-content {
+  background-image: linear-gradient(#ffffff, #ffffff, #228b22);
+}
+
+.last-step {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heading {
+  text-align: center;
+  height: 40px;
+  color: #000000;
+  font-weight: bold;
+  width: 100vw;
+}
+
+.conclusion {
+  text-align: center;
+  font-size: large;
+  height: 120px;
+  width: 100vw;
+}
+
+.result {
+  padding: 6px;
+  flex: 1;
+  width: 100vw;
+  text-align: center;
+}
+
+.number {
+  padding: 6px;
+  width: 100vw;
+  text-align: center;
+}
+
+.buttons-bottom {
+  height: 50px;
+  padding-top:8px;
+}
+
+.button-bottom-back {
+  display: inline-block;
+  width: 50vw;
+}
+
+.button-bottom-forth {
+  display: inline-block;
+  width: 50vw;
+}

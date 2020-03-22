@@ -1,0 +1,38 @@
+.list-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.heading-label {
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+  width: 100vw;
+  height: 50px;
+}
+
+.list-container {
+  flex: 1;
+  overflow: scroll;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.buttons-bottom {
+  height: 50px;
+  padding-top:8px;
+}
+
+.button-bottom-back {
+  display: inline-block;
+  width: 50vw;
+}
+
+.button-bottom-forth {
+  display: inline-block;
+  width: 50vw;
+}
