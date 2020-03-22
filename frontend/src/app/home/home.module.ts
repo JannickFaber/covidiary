@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
+import {DayEntryComponent} from "./day-entry/day-entry.component";
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { HomePage } from './home.page';
     FormsModule,
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, DayEntryComponent]
 })
 export class HomePageModule {}

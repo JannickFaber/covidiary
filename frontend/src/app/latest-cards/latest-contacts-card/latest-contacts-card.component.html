@@ -1,0 +1,15 @@
+<div>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-icon name="people" item-left></ion-icon>
+        <ion-title>Deine Kontaktpersonen</ion-title>
+      </ion-list-header>
+
+      <ion-item *ngFor="let contact of contacts">
+        <ion-label>
+          <h2>{{contact.name}}, {{contact.visitedAt.toLocaleDateString()}}</h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+</div>

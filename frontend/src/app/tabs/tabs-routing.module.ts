@@ -38,6 +38,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'summary',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../summary/summary.module').then(m => m.SummaryPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
@@ -55,4 +65,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

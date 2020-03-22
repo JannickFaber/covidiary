@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Zusammenfassung</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p *ngIf="!backendEnabled" class="margin">Server nicht verfügbar. Der Globale Score ist immer 0.</p>
+  <p class="margin">Im Schnitt liegt dein Kontakt Score bei {{contactScore}}, andere Nutzer hatten einen Score von {{globalContactScore}}</p>
+  <p class="margin">Im Schnitt liegt dein Location Score bei {{locationScore}}, andere Nutzer hatten einen Score von {{globalLocationScore}}</p>
+
+  <ion-item>
+    <ion-label>Zusammenfassen ab</ion-label>
+    <ion-datetime display-format="DD.MM.YYYY" picker-format="DD.MM.YYYY" [(ngModel)]="timeToSummarize"></ion-datetime>
+  </ion-item>
+
+  <app-latest-contacts-card [startDate]="timeToSummarize"></app-latest-contacts-card>
+  <app-latest-places-card [startDate]="timeToSummarize"></app-latest-places-card>
+</ion-content>

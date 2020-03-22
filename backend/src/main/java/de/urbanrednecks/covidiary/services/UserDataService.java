@@ -1,5 +1,7 @@
 package de.urbanrednecks.covidiary.services;
 
+import de.urbanrednecks.covidiary.dtos.UserDto;
+import de.urbanrednecks.covidiary.dtos.WeekResultDto;
 import de.urbanrednecks.covidiary.entities.UserMapper;
 import de.urbanrednecks.covidiary.entities.WeekResult;
 import de.urbanrednecks.covidiary.repositories.UserRepository;
@@ -9,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -23,22 +27,22 @@ public class UserDataService {
         this.weekResultRepository = weekResultRepository;
     }
 
-    public String saveWeeklyScore(String uuid, WeekResult weekResult) {
-        if (weekResult != null) {
+    public UserDto saveWeeklyScore(String uuid, WeekResultDto dto) {
+        if (dto != null) {
+            WeekResult weekResult = new WeekResult();
+            weekResult.setLocationScore(weekResult.getLocationScore());
+            weekResult.setContactScore(weekResult.getContactScore());
             weekResult.setFirstDay(LocalDate.now().with(DayOfWeek.MONDAY));
             UserMapper user = userRepository.findByObjectId(uuid);
             if (user != null) {
                 WeekResult toUpdate = user.getWeekResults().stream()
                         .filter(result -> result.getFirstDay().equals(weekResult.getFirstDay())).findFirst().orElse(null);
-                System.out.println(toUpdate);
                 if (toUpdate == null) {
                     user.addToWeekResults(weekResult);
                     userRepository.save(user);
                 } else {
-                    System.out.println(toUpdate.getId());
                     toUpdate.setContactScore(weekResult.getContactScore());
                     toUpdate.setLocationScore(weekResult.getLocationScore());
-                    System.out.println(toUpdate.getId());
                     weekResultRepository.save(toUpdate);
                 }
             } else {
@@ -46,47 +50,48 @@ public class UserDataService {
                 user.addToWeekResults(weekResult);
                 user = userRepository.save(user);
             }
-            return user.getObjectId();
+            return new UserDto(user.getObjectId());
         }
         return null;
     }
 
-    public double getLocationScore(LocalDate firstDayOfWeek) {
+    public WeekResultDto getWeeklyScore(LocalDate firstDayOfWeek) {
         if (firstDayOfWeek.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
+            WeekResultDto dto = new WeekResultDto();
             if (weekResultRepository.count() == 0) {
-                return 0;
+                dto.setLocationScore(0);
+                dto.setContactScore(0);
+            } else {
+                List<WeekResult> filteredResults = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                        .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).collect(Collectors.toList());
+
+                double locationSum = filteredResults.stream().mapToDouble(WeekResult::getContactScore).sum();
+                dto.setLocationScore(locationSum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                        .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count());
+
+                double contactScore = filteredResults.stream().mapToDouble(WeekResult::getLocationScore).sum();
+                dto.setContactScore(contactScore / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
+                        .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count());
             }
-            double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek))
+            return dto;
+        } else {
+            throw new IllegalArgumentException("firstDayOfWeek must be a monday. " + firstDayOfWeek + " is a " + firstDayOfWeek.getDayOfWeek());
+        }
+    }
+
+    public WeekResultDto getGlobalScore() {
+        WeekResultDto dto = new WeekResultDto();
+        if (weekResultRepository.count() == 0) {
+            dto.setContactScore(0);
+            dto.setLocationScore(0);
+        } else {
+            double locationSum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
                     .mapToDouble(WeekResult::getLocationScore).sum();
-            return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count();
-        } else {
-            throw new IllegalArgumentException("firstDayOfWeek must be a monday. " + firstDayOfWeek + " is a " + firstDayOfWeek.getDayOfWeek());
-        }
-    }
-
-    public double getContactScore(LocalDate firstDayOfWeek) {
-        if (firstDayOfWeek.getDayOfWeek().equals(DayOfWeek.MONDAY)) {
-            double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek))
+            dto.setLocationScore(locationSum / weekResultRepository.count());
+            double contactSum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
                     .mapToDouble(WeekResult::getContactScore).sum();
-            return sum / StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                    .filter(weekResult -> weekResult.getFirstDay().equals(firstDayOfWeek)).count();
-        } else {
-            throw new IllegalArgumentException("firstDayOfWeek must be a monday. " + firstDayOfWeek + " is a " + firstDayOfWeek.getDayOfWeek());
+            dto.setLocationScore(contactSum / weekResultRepository.count());
         }
-    }
-
-    public double getLocationScore() {
-        double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                .mapToDouble(WeekResult::getLocationScore).sum();
-        return sum / weekResultRepository.count();
-    }
-
-    public double getContactScore() {
-        double sum = StreamSupport.stream(weekResultRepository.findAll().spliterator(), false)
-                .mapToDouble(WeekResult::getContactScore).sum();
-        return sum / weekResultRepository.count();
+        return dto;
     }
 }
