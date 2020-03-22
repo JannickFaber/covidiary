@@ -4,7 +4,7 @@ ion-content {
   }
 
   & > ion-grid > ion-row > ion-col {
-    border: 1px solid #fff;
+    border: 1px solid var(--ion-text-color, #000);
   }
 
   .top {

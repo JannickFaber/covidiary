@@ -10,11 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateEntryModule } from './create-entry/create-entry.module';
 import { NewsComponentModule } from './news/news.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule, NewsComponentModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule, NewsComponentModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,
