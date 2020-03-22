@@ -37,6 +37,8 @@ Angular, Ionic, Java, JavaScript, Spring Boot
 
 ## Video
 
+[![#WirVsVirus Hackathon - 08 Corona Tracking - Infektionsketten erfassen](https://img.youtube.com/vi/-B8uOof2D0w/0.jpg)](https://www.youtube.com/watch?v=-B8uOof2D0w)
+
 ## Mockups
 
 | Startseite / Kalender | Eintrag Schritt 1 |
