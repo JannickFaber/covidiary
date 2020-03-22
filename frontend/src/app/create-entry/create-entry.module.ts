@@ -12,8 +12,8 @@ import { EntryModalComponent } from './list-page/entry-modal/entry-modal.compone
     IonicModule,
     CommonModule,
     FormsModule
-  ], 
+  ],
   entryComponents: [EntryModalComponent],
   declarations: [CreateEntryComponent, ChoicePageComponent, ListPageComponent, EntryModalComponent]
 })
-export class CreateEntryModule {}
+export class CreateEntryModule { }

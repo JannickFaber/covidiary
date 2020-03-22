@@ -26,9 +26,11 @@ export class BackendService {
             contactScore
         };
         if (objectId && objectId !== '') {
-            return this.httpClient.post<any>(`${this.apiURL}/score/${objectId}`, JSON.stringify(weekResult), { observe: 'response' }).toPromise();
+            return this.httpClient.post<any>(`${this.apiURL}/score/${objectId}`, JSON.stringify(weekResult), { observe: 'response' })
+                .toPromise();
         } else {
-            return this.httpClient.post<any>(`${this.apiURL}/score/`, JSON.stringify(weekResult), { observe: 'response' }).toPromise();
+            return this.httpClient.post<any>(`${this.apiURL}/score/`, JSON.stringify(weekResult), { observe: 'response' })
+                .toPromise();
         }
     }
 

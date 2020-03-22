@@ -13,7 +13,7 @@ export class ListPageComponent implements OnInit, OnChanges {
   places: string[] = [];
 
   @Input()
-  isLocation: boolean = true;
+  isLocation = true;
 
   @Input()
   personList: string[];
@@ -35,16 +35,19 @@ export class ListPageComponent implements OnInit, OnChanges {
   ngOnInit() { }
 
   ngOnChanges(changes: SimpleChanges) {
-      const personChange: SimpleChange = changes['personList'];
-      const placeChange: SimpleChange = changes['placeList'];
+    const listperson = 'personList';
+    const listplaces = 'placeList';
 
-      if(personChange.currentValue) {
-        this.persons = personChange.currentValue;
-      }
+    const personChange: SimpleChange = changes[listperson];
+    const placeChange: SimpleChange = changes[listplaces];
 
-      if(placeChange.currentValue) {
-        this.places = placeChange.currentValue;
-      }
+    if (personChange.currentValue) {
+      this.persons = personChange.currentValue;
+    }
+
+    if (placeChange.currentValue) {
+      this.places = placeChange.currentValue;
+    }
 
   }
   removePlace(index: number) {
@@ -65,17 +68,17 @@ export class ListPageComponent implements OnInit, OnChanges {
     const modal = await this.modalController.create({
       component: EntryModalComponent,
       componentProps: {
-        'location': this.isLocation,
-        'modalCtrl': this.modalController
+        location: this.isLocation,
+        modalCtrl: this.modalController
       }
     });
     await modal.present();
     const entryData = await (await modal.onWillDismiss());
     const newString: string = entryData.data.entryString;
 
-    if(newString.length > 0 && !this.isLocation) {
-    this.persons.push(newString);
-    } else if(newString.length > 0 && this.isLocation) {
+    if (newString.length > 0 && !this.isLocation) {
+      this.persons.push(newString);
+    } else if (newString.length > 0 && this.isLocation) {
       this.places.push(newString);
     }
   }

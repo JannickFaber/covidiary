@@ -9,7 +9,7 @@ import { EventEmitter } from '@angular/core';
 export class ChoicePageComponent implements OnInit {
 
   @Input()
-  isLocation: boolean = true;
+  isLocation = true;
 
   @Output()
   outsideEmitter: EventEmitter<boolean> = new EventEmitter();
