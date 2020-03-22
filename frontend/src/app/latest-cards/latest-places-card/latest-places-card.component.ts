@@ -1,24 +1,31 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
+import {StorageService} from "../../services/storage-service";
 
 @Component({
   selector: 'app-latest-places-card',
   templateUrl: './latest-places-card.component.html',
   styleUrls: ['./latest-places-card.component.scss'],
 })
-export class LatestPlacesCardComponent implements OnInit {
+export class LatestPlacesCardComponent implements OnChanges {
 
   @Input() startDate: Date;
   places = [];
 
-  constructor() { }
+  constructor(private storageService: StorageService) {}
 
-  ngOnInit() {
+  ngOnChanges() {
     // TODO get all places from storage service
-    this.places.push({name: 'place 1', visitedAt: new Date('2020-03-15')});
-    this.places.push({name: 'place 2', visitedAt: new Date('2020-03-12')});
-    this.places.push({name: 'place 3', visitedAt: new Date('2020-03-18')});
-    this.places.push({name: 'place 4', visitedAt: new Date('2020-03-12')});
-    this.places.push({name: 'place 5', visitedAt: new Date('2020-03-11')});
+    this.places = [];
+    this.storageService.getDiaryEntries().forEach(entry => {
+      if (new Date(entry.date).getTime() > new Date(this.startDate).getTime() && entry.locations && entry.locations.length > 0) {
+        entry.locations.forEach(person => {
+          this.places.push({
+            name: person,
+            visitedAt: new Date(entry.date)
+          })
+        });
+      }
+    });
   }
 
 }

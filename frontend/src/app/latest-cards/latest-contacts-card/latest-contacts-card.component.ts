@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {StorageService} from "../../services/storage-service";
 
 @Component({
   selector: 'app-latest-contacts-card',
@@ -10,14 +11,20 @@ export class LatestContactsCardComponent implements OnInit {
   @Input() startDate: Date;
   contacts = [];
 
-  constructor() { }
+  constructor(private storageService: StorageService) {}
 
   ngOnInit() {
     // TODO get all contacts from storage service
-    this.contacts.push({name: 'person 1', visitedAt: new Date('2020-03-15')});
-    this.contacts.push({name: 'person 2', visitedAt: new Date('2020-03-12')});
-    this.contacts.push({name: 'person 3', visitedAt: new Date('2020-03-18')});
-    this.contacts.push({name: 'person 4', visitedAt: new Date('2020-03-12')});
-    this.contacts.push({name: 'person 5', visitedAt: new Date('2020-03-11')});
+    this.contacts = [];
+    this.storageService.getDiaryEntries().forEach(entry => {
+      if (new Date(entry.date).getTime() > new Date(this.startDate).getTime() && entry.persons && entry.persons.length > 0) {
+        entry.persons.forEach(person => {
+          this.contacts.push({
+            name: person,
+            visitedAt: new Date(entry.date)
+          })
+        });
+      }
+    });
   }
 }

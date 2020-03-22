@@ -1,16 +1,18 @@
 package de.urbanrednecks.covidiary.controller;
 
+import de.urbanrednecks.covidiary.dtos.UserDto;
+import de.urbanrednecks.covidiary.dtos.WeekResultDto;
 import de.urbanrednecks.covidiary.entities.WeekResult;
 import de.urbanrednecks.covidiary.services.UserDataService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
 @RestController
-@CrossOrigin("*")
 public class UserDataController {
 
     private final UserDataService userDataService;
@@ -20,59 +22,37 @@ public class UserDataController {
         this.userDataService = userDataService;
     }
 
-
     @ApiOperation(
             value = "Save a week result for a user",
             consumes = "Consumes a unique object id to identify the user. If userId is not set, a new unique object id will be generated.",
             produces = "Produces the unique object id of the user, or a new UUID for the user to identify themselves."
     )
-    @PostMapping({"/score/{userId}", "/score"})
-    public String saveWeeklyScore(
-            @ApiParam("The weekly result to save.") @RequestBody WeekResult weekResult,
+    @PostMapping(value = {"/score/{userId}", "/score"}, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public UserDto saveWeeklyScore(
+            @ApiParam("The weekly result to save.") @RequestBody WeekResultDto weekResult,
             @ApiParam("The unique object id of the user to save the results for.") @PathVariable(required = false) String userId
     ) {
         return userDataService.saveWeeklyScore(userId, weekResult);
     }
 
     @ApiOperation(
-            value = "Get the average contact score over all weeks.",
-            produces = "A double value of the average contact score over all weeks."
+            value = "Get the average score over all weeks.",
+            produces = "A double value of the average score over all weeks."
     )
-    @GetMapping("/score/contact/global")
-    public double getGlobalContactScore() {
-        return userDataService.getContactScore();
+    @GetMapping("/score/get/global")
+    public WeekResultDto getGlobalLocationScore() {
+        return userDataService.getGlobalScore();
     }
 
     @ApiOperation(
-            value = "Get the average location score over all weeks.",
-            produces = "A double value of the average location score over all weeks."
-    )
-    @GetMapping("/score/location/global")
-    public double getGlobalLocationScore() {
-        return userDataService.getLocationScore();
-    }
-
-    @ApiOperation(
-            value = "Get the average contact score over a specific week.",
+            value = "Get the average score over a specific week.",
             consumes = "The first day of the week to get the scores for.",
-            produces = "A double value of the average contact score over specific week."
+            produces = "A double value of the average score over specific week."
     )
-    @GetMapping("/score/contact/{firstDayOfWeek}")
-    public double getWeeklyContactScore(
+    @GetMapping("/score/get/{firstDayOfWeek}")
+    public WeekResultDto getWeeklyContactScore(
             @ApiParam("The first day of the specified week as LocalDate") @PathVariable String firstDayOfWeek
     ) {
-        return userDataService.getContactScore(LocalDate.parse(firstDayOfWeek));
-    }
-
-    @ApiOperation(
-            value = "Get the average location score over a specific week.",
-            consumes = "The first day of the week to get the scores for.",
-            produces = "A double value of the average location score over specific week."
-    )
-    @GetMapping("/score/location/{firstDayOfWeek}")
-    public double getWeeklyLocationScore(
-            @ApiParam("The first day of the specified week as LocalDate") @PathVariable String firstDayOfWeek
-    ) {
-        return userDataService.getLocationScore(LocalDate.parse(firstDayOfWeek));
+        return userDataService.getWeeklyScore(LocalDate.parse(firstDayOfWeek));
     }
 }

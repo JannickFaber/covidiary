@@ -35,13 +35,11 @@ export class CreateEntryComponent implements OnInit, AfterViewInit {
 
   setPersons(persons: string[]) {
     this.persons = persons;
-    console.log(persons);
     this.diaryEntry.persons = persons;
   }
 
   setPlaces(places: string[]) {
     this.places = places;
-    console.log(places);
     this.diaryEntry.locations = places;
   }
 
@@ -78,12 +76,8 @@ export class CreateEntryComponent implements OnInit, AfterViewInit {
           if (!this.diaryEntry.locations) {
             this.diaryEntry.locations = [];
           }
-          console.log(this.diaryEntry);
           this.diaryEntry.date = this.date.format('YYYY-MM-DD');
           this.storageService.updateDiaryEntry(this.diaryEntry);
-          console.log(this.date);
-          console.log(this.storageService.getDiaryEntries());
-          // console.log(this.storageService.getEntryByDate(this.date.format('YYYY-MM-DD')));
           break;
       }
     } else {

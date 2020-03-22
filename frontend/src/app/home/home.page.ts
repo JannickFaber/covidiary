@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import * as moment from "moment";
 import {DiaryEntry} from "../model/diary-entry";
 import {StorageService} from "../services/storage-service";
-import {NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
 import {BackendService} from "../services/backend-service";
 
@@ -11,7 +11,7 @@ import {BackendService} from "../services/backend-service";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   date = moment();
   diaryEntries: DiaryEntry[];
@@ -22,16 +22,13 @@ export class HomePage implements OnInit {
     this.router.events.pipe(
         filter(event => event instanceof NavigationEnd)
     ).subscribe((route: NavigationEnd) => {
-      console.log('test');
       this.initData();
     });
   }
 
-  ngOnInit(): void {
-    this.initData();
-  }
-
   private initData() {
+    this.locationScore = 0;
+    this.contactScore = 0;
     this.diaryEntries = [];
     let divideContactBy = 0, divideLocationBy = 0;
     for (let i = 1; i < 8; i++) {
@@ -59,15 +56,14 @@ export class HomePage implements OnInit {
         divideContactBy++;
       }
     });
-    console.log(this.locationScore + ', ' + this.contactScore);
-    this.locationScore = (divideLocationBy === 0 ? 0 : this.locationScore / divideLocationBy);
-    this.contactScore = (divideContactBy === 0 ? 0 : this.contactScore / divideContactBy);
+    this.locationScore = Math.round((divideLocationBy === 0 ? 0 : this.locationScore / divideLocationBy) * 100) / 100;
+    this.contactScore = Math.round((divideContactBy === 0 ? 0 : this.contactScore / divideContactBy) * 100) / 100;
 
     if (this.storageService.getUserId()) {
       this.backendService.saveWeeklyScore(this.storageService.getUserId(), this.locationScore, this.contactScore);
     } else {
       this.backendService.saveWeeklyScore(null, this.locationScore, this.contactScore).then(response => {
-        this.storageService.setUserId(response.body);
+        this.storageService.setUserId(response.body.objectId);
       }).catch(e => {
         console.error('An error happened during server synchronization:');
         console.error(e);

@@ -22,47 +22,31 @@ export class BackendService {
      */
     public saveWeeklyScore(objectId: string, locationScore: number, contactScore: number): Promise<HttpResponse<any>> {
         const weekResult = {
-            locationScore,
-            contactScore
+            locationScore: locationScore,
+            contactScore: contactScore
         };
         if (objectId && objectId !== '') {
-            return this.httpClient.post<any>(`${this.apiURL}/score/${objectId}`, JSON.stringify(weekResult), { observe: 'response' })
+            return this.httpClient.post<any>(`${this.apiURL}/score/${objectId}`, weekResult, { observe: 'response' })
                 .toPromise();
         } else {
-            return this.httpClient.post<any>(`${this.apiURL}/score/`, JSON.stringify(weekResult), { observe: 'response' })
+            return this.httpClient.post<any>(`${this.apiURL}/score`, weekResult, { observe: 'response' })
                 .toPromise();
         }
     }
 
     /**
-     * Get the contact score of all users over all weeks.
+     * Get the global score over all weeks.
      */
-    public getGlobalContactScore(): Promise<HttpResponse<any>> {
-        return this.httpClient.get<any>(`${this.apiURL}/score/contact/global`, { observe: 'response' }).toPromise();
+    public getGlobalScore(): Promise<HttpResponse<any>> {
+        return this.httpClient.get<any>(`${this.apiURL}/score/get/global`, { observe: 'response' }).toPromise();
     }
 
     /**
-     * Get the location score of all users over all weeks.
-     */
-    public getGlobalLocationScore(): Promise<HttpResponse<any>> {
-        return this.httpClient.get<any>(`${this.apiURL}/score//location/global`, { observe: 'response' }).toPromise();
-    }
-
-    /**
-     * Get the contact score of all users over a specific week.
+     * Get the score for a specific week.
      *
      * @param firstDayOfWeek First day of the week to get the data for. Must be a monday.
      */
-    public getWeeklyContactScore(firstDayOfWeek: string): Promise<HttpResponse<any>> {
-        return this.httpClient.get<any>(`${this.apiURL}/score/contact/${firstDayOfWeek}`, { observe: 'response' }).toPromise();
-    }
-
-    /**
-     * Get the location score of all users over a specific week.
-     *
-     * @param firstDayOfWeek First day of the week to get the data for. Must be a monday.
-     */
-    public getWeeklyLocationScore(firstDayOfWeek: string): Promise<HttpResponse<any>> {
-        return this.httpClient.get<any>(`${this.apiURL}/score/location/${firstDayOfWeek}`, { observe: 'response' }).toPromise();
+    public getWeeklyScore(firstDayOfWeek: string): Promise<HttpResponse<any>> {
+        return this.httpClient.get<any>(`${this.apiURL}/score/get/${firstDayOfWeek}`, { observe: 'response' }).toPromise();
     }
 }

@@ -6,6 +6,8 @@ import {DiaryEntry} from "../model/diary-entry";
 })
 export class StorageService {
 
+    private backendEnabled = false;
+
     constructor() {
     }
 
@@ -47,6 +49,10 @@ export class StorageService {
 
     public getUserId(): string {
         return localStorage.getItem('userId');
+    }
+
+    public getBackendEnabled() {
+        return this.backendEnabled;
     }
 
     public updateDiaryEntry(diaryEntry: DiaryEntry) {

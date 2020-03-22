@@ -5,10 +5,9 @@
 </ion-header>
 
 <ion-content>
-<!--  <ion-text>-->
-    <p class="margin">Im Schnitt liegt dein Kontakt Score bei {{contactScore}}, andere Nutzer hatten einen Score von {{globalContactScore}}</p>
-    <p class="margin">Im Schnitt liegt dein Location Score bei {{contactScore}}, andere Nutzer hatten einen Score von {{globalContactScore}}</p>
-<!--  </ion-text>-->
+  <p *ngIf="!backendEnabled" class="margin">Server nicht verfügbar. Der Globale Score ist immer 0.</p>
+  <p class="margin">Im Schnitt liegt dein Kontakt Score bei {{contactScore}}, andere Nutzer hatten einen Score von {{globalContactScore}}</p>
+  <p class="margin">Im Schnitt liegt dein Location Score bei {{locationScore}}, andere Nutzer hatten einen Score von {{globalLocationScore}}</p>
 
   <ion-item>
     <ion-label>Zusammenfassen ab</ion-label>

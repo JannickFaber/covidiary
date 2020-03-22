@@ -10,37 +10,40 @@ import * as moment from "moment";
 })
 export class SummaryPage implements OnInit {
 
+  backendEnabled = false;
   timeToSummarize = moment().days(-14).toISOString();
-  contactScore: number;
-  globalContactScore: number;
-  locationScore: number;
-  globalLocationScore: number;
+  contactScore = 0;
+  globalContactScore = 0;
+  locationScore = 0;
+  globalLocationScore = 0;
 
   constructor(private backendService: BackendService, private storageService: StorageService) {}
 
   ngOnInit() {
-    const entries = this.storageService.getDiaryEntries();
-    entries.forEach(entry => {
-      this.contactScore += entry.persons.length;
-      this.locationScore += entry.locations.length;
+    let divideContactBy = 0, divideLocationBy = 0;
+    this.storageService.getDiaryEntries().forEach(entry => {
+      if (entry.locations) {
+        this.locationScore += entry.locations.length;
+        divideLocationBy++;
+      }
+      if (entry.persons) {
+        this.contactScore += entry.persons.length;
+        divideContactBy++;
+      }
     });
+    this.locationScore = (divideLocationBy === 0 ? 0 : this.locationScore / divideLocationBy);
+    this.contactScore = (divideContactBy === 0 ? 0 : this.contactScore / divideContactBy);
+    this.backendEnabled = this.storageService.getBackendEnabled();
 
-    this.contactScore = this.contactScore / entries.length;
-    this.backendService.getGlobalContactScore().then((response) => {
-      this.globalContactScore = response.body;
-    }).catch(e => {
-      console.error('There was an error querying the global data:');
-      console.error(e);
-      this.globalLocationScore = -1;
-    });
-
-    this.locationScore = this.locationScore / entries.length;
-    this.backendService.getGlobalLocationScore().then(response => {
-      this.globalLocationScore = response.body;
-    }).catch(e => {
-      console.error('There was an error querying the global data:');
-      console.error(e);
-      this.globalLocationScore = -1;
-    });
+    if (this.backendEnabled) {
+      this.backendService.getGlobalScore().then((response) => {
+        this.globalContactScore = response.body.contactScore;
+        this.globalLocationScore = response.body.locationScore;
+      }).catch(e => {
+        console.error('There was an error querying the global data:');
+        console.error(e);
+        this.globalLocationScore = -1;
+      });
+    }
   }
 }
