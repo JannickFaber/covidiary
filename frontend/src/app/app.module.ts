@@ -16,7 +16,7 @@ import {NewsComponentModule} from "./news/news.module";
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule, NewsComponentModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CreateEntryModule, NewsComponentModule],
   providers: [
     StatusBar,
     SplashScreen,
