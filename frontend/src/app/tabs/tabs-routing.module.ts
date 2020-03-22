@@ -33,7 +33,17 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              import('../settings/settings.module').then(m => m.SettingsPageModule)
+                import('../settings/settings.module').then(m => m.SettingsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'news',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../news/news.module').then(m => m.NewsComponentModule)
           }
         ]
       },
