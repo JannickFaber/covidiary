@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -11,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateEntryModule } from './create-entry/create-entry.module';
-import {NewsComponentModule} from "./news/news.module";
+import { NewsComponentModule } from './news/news.module';
 
 @NgModule({
   declarations: [AppComponent],
