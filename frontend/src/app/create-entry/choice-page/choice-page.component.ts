@@ -27,7 +27,7 @@ export class ChoicePageComponent implements OnInit {
   emitContact(contact: boolean) {
     this.contactEmitter.emit(contact);
   }
-
+//
   emitOutside(outside: boolean) {
     this.outsideEmitter.emit(outside);
   }
