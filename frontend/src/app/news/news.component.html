@@ -1,43 +1,41 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      News
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            News
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">News</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">News</ion-title>
+        </ion-toolbar>
+    </ion-header>
 
-  <div *ngFor="let article of news">
+    <div *ngFor="let article of news">
+        <ion-card>
+          <ion-item>
+            <ion-datetime *ngIf="article.publishedAt" value="{{article.publishedAt}}"></ion-datetime>
+            <div *ngIf="article.author">
+              &nbsp; von {{article.author}}
+            </div>
+          </ion-item>
+            <ion-img *ngIf="article.urlToImage" src="{{article.urlToImage}}"></ion-img>
+            <ion-card-header>
+                <ion-card-subtitle>
 
-    <ion-item>
-      <ion-datetime value="{{article.publishedAt}}" placeholder="Select Date"></ion-datetime>
-    </ion-item>
+                </ion-card-subtitle>
+                <ion-card-title *ngIf="article.title">{{article.title}}</ion-card-title>
+            </ion-card-header>
 
-    <ion-card>
-      <ion-card-header>
-        <ion-item>
-        <ion-card-subtitle>{{article.source.name}}</ion-card-subtitle>
-        </ion-item>
-        <ion-item>
-          <ion-card-title>{{article.title}}</ion-card-title>
-          <ion-button slot="end" href="{{article.url}}">Artikel</ion-button>
-        </ion-item>
-
-      </ion-card-header>
-      <ion-card-content>
-        {{article.description}}
-      </ion-card-content>
-    </ion-card>
-
-  </div>
-
-
+            <ion-card-content *ngIf="article.description">
+                {{article.description}}
+            </ion-card-content>
+          <ion-item>
+            <ion-button *ngIf="article.url && article.source.name" size="default" href="{{article.url}}">Zum Artikel auf {{article.source.name}}</ion-button>
+          </ion-item>
+        </ion-card>
+    </div>
 </ion-content>
