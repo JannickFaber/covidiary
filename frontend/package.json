@@ -34,7 +34,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
     "core-js": "^2.5.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nan": "^2.14.0",
     "npm-force-resolutions": "0.0.3",
     "rxjs": "~6.5.1",
